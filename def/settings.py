@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'dj_rest_auth',
     'blog',
+    'allauth',
+    'allauth.account',
+    # 'dj_rest_auth.registration',
+    'allauth.socialaccount',
+
 ]
 
 MIDDLEWARE = [
@@ -52,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'def.urls'
@@ -128,6 +135,8 @@ REST_FRAMEWORK = {
 }
 REST_AUTH = {
     'USE_JWT': True,
-    'JWT_AUTH_COOKIE': 'auth',
+    'JWT_AUTH_COOKIE': 'access',
+    'JWT_AUTH_REFRESH_COOKIE': 'refresh',
     'JWT_AUTH_HTTPONLY': True,
 }
+SITE_ID = 1
