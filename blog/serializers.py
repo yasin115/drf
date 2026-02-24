@@ -7,18 +7,15 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = '__all__'
 class ArticleSerializer(ModelSerializer):
-    author = UserSerializer()
     class Meta:
         model = Article
         fields = '__all__'
-
+    author = UserSerializer()
     def validate_name(self, value):
         if value == "test" or value == "set":
             raise serializers.ValidationError("Name cannot be " + value)
         return value
     def validate(self, attrs):
-        # a = str(attrs["desc"])
-        # print(le)
         if len(attrs["desc"]) > 3:
             raise serializers.ValidationError("Start date must be before end date")
-        return attrs
+        return attrs 
