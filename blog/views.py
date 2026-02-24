@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets
-import django_filters.rest_framework
+
 from .models import Article
 from .serializers import UserSerializer,ArticleSerializer
 from .permission import UserAccessPermission,ArticlePermission
